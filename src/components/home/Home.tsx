@@ -7,11 +7,11 @@ interface Props {
 }
 
 const Home: React.FC<Props> = () => {
-    const [posts, setPosts] = useState<PostProps[]>();
+    const [posts, setPosts] = useState<PostProps[]>([]);
 
     const fetchAllPosts = async () => {
         try {
-            const response = await fetch('http://localhost:3000/posts');
+            const response = await fetch('http://localhost:5000/posts');
             if (!response.ok) {
                 throw new Error('Network response was not ok');
             }
