@@ -8,16 +8,19 @@ import './Post.css';
 interface Props {
     username: string;
     text: string;
+    likes: number;
+    comments: number;
 }
 
-const Post: React.FC<Props> = ({ username, text }) => {
+const Post: React.FC<Props> = ({ username, text, likes, comments }) => {
     return (
         <div className="post-container">
             <PostHeader username={username} />
             <PostDescription text={text}/>
-            <PostLikesComments likes={150} comments={25} />
+            <PostLikesComments likes={likes} comments={comments} />
         </div>
     );
 }
 
 export default Post;
+export type { Props as PostProps };

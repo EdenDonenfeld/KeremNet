@@ -1,16 +1,13 @@
 import React from 'react';
 import './App.css';
-import Post from './components/post/Post';
+import Home from './components/home/Home';
+import posts from './api/posts.json';
 
 const App = () => {
+  const postsFromJson = posts.posts;
   return (  
     <div className="App">
-      <Post username="eden_donenfeld" text="Walking my dog in the park 🐕" />
-      <Post username="zoey_the_zebra" text="Loving course Kerem" />
-      <Post username="eden_donenfeld" text="Walking my dog in the park 🐕" />
-      <Post username="zoey_the_zebra" text="Loving course Kerem" />
-      <Post username="eden_donenfeld" text="Walking my dog in the park 🐕" />
-      <Post username="zoey_the_zebra" text="Loving course Kerem" />
+      <Home postsFromJson={postsFromJson} />
     </div>
   );
 }
