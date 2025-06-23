@@ -1,8 +1,15 @@
 .post-likes-comments-container {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
+    width: 100%;
+    margin-top: 1rem;
+}
+
+.post-likes-comments {
+    display: flex;
     justify-content: space-between;
+    align-items: center;
     width: 100%;
     padding: 1rem;
     background-color: #f1f1f1;
@@ -17,6 +24,10 @@
     gap: 0.5rem;
 }
 
+.comments:hover {
+    cursor: pointer;
+}
+
 .likes-icon, .comments-icon {
     width: 1rem;
     height: 1rem;
@@ -28,4 +39,26 @@
 
 .comments-icon {
     color: #2196f3;
+}
+
+.comments-list-container {
+    width: 100%;
+    padding: 0 1rem;
+    margin-top: 0.5rem;
+}
+
+.comments-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+}
+
+.no-comments {
+    width: 100%;
+    padding: 0 1rem;
+    margin-top: 0.5rem;
+    font-style: italic;
+    color: #888;
+    text-align: left;
 }
