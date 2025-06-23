@@ -16,7 +16,7 @@ const Home: React.FC<Props> = () => {
                 throw new Error('Network response was not ok');
             }
             const data = await response.json();
-            setPosts(data.posts);
+            setPosts(data);
         } catch (error) {
             console.error('Failed to fetch posts:', error);
         }
