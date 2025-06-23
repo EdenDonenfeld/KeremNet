@@ -8,10 +8,24 @@
     background-color: #f1f1f1;
     border-top: 1px solid #ddd;
     border-radius: 0.5rem;
+    font-size: 0.75rem;
 }
 
 .likes, .comments {
     display: flex;
     align-items: center;
     gap: 0.5rem;
+}
+
+.likes-icon, .comments-icon {
+    width: 1rem;
+    height: 1rem;
+}
+
+.likes-icon {
+    fill: #ff4081;
+}
+
+.comments-icon {
+    fill: #2196f3;
 }
