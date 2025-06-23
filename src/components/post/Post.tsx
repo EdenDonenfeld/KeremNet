@@ -3,6 +3,7 @@ import PostHeader from './PostHeader';
 import PostContent from './PostContent';
 import PostLikesComments from './PostLikesComments';
 import PostDescription from './PostDescription';
+import './Post.css'; 
 
 const Post: React.FC = () => {
     return (
