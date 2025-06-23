@@ -28,5 +28,12 @@
 }
 
 .time {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     color: #444;
+}
+
+.date, .hour {
+    margin: 0;
 }

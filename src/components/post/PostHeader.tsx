@@ -6,6 +6,17 @@ interface Props {
 }
 
 const PostHeader: React.FC<Props> = ({ username }) => {
+    const currentDate = new Date();
+    const formattedDate = currentDate.toLocaleDateString('en-US', {
+        month: 'short',
+        day: 'numeric',
+        year: 'numeric',
+    });
+    const formattedTime = currentDate.toLocaleTimeString('en-US', {
+        hour: '2-digit',
+        minute: '2-digit',
+    });
+
     return (
         <div className="post-header">
             <div className="user-info">
@@ -14,8 +25,9 @@ const PostHeader: React.FC<Props> = ({ username }) => {
                 </svg>                       
                 <span className="user-name">{username}</span>
             </div>
-            <div className="post-time">
-                <span className="time">2 hours ago</span>
+            <div className="time">
+                <p className="date">{formattedDate}</p>
+                <p className="hour">{formattedTime}</p>
             </div>
         </div>
     );

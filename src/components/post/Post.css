@@ -6,6 +6,6 @@
     background-color: #f9f9f9;
     border: 1px solid #ddd;
     border-radius: 1rem;
-    max-width: 30vw;
-    margin: 1rem auto;
+    min-width: 25vw;
+    margin: 1rem;
 }
