@@ -1,6 +1,5 @@
 import React from 'react';
 import PostHeader from './PostHeader';
-// import PostContent from './PostContent';
 import PostLikesComments from './PostLikesComments';
 import PostDescription from './PostDescription';
 import './Post.css'; 
@@ -8,14 +7,17 @@ import './Post.css';
 interface Props {
     username: string;
     text: string;
+    date: string;
+    likes: number;
+    comments: number;
 }
 
-const Post: React.FC<Props> = ({ username, text }) => {
+const Post: React.FC<Props> = ({ username, text, date, likes, comments }) => {
     return (
         <div className="post-container">
-            <PostHeader username={username} />
+            <PostHeader username={username} date={date} />
             <PostDescription text={text}/>
-            <PostLikesComments likes={150} comments={25} />
+            <PostLikesComments likes={likes} comments={comments} />
         </div>
     );
 }
