@@ -1,8 +1,16 @@
 .post-likes-comments-container {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
+    width: 100%;
+    margin-top: 1rem;
+}
+
+.post-likes-comments {
+    display: flex;
+    flex-direction: row;
     justify-content: space-between;
+    align-items: center;
     width: 100%;
     padding: 1rem;
     background-color: #f1f1f1;
@@ -23,9 +31,31 @@
 }
 
 .likes-icon {
-    fill: #ff4081;
+    color: #ff4081;
 }
 
 .comments-icon {
-    fill: #2196f3;
+    color: #2196f3;
+}
+
+.comments-list-container {
+    width: 100%;
+    padding: 0 1rem;
+    margin-top: 0.5rem;
+}
+
+.comments-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+}
+
+.no-comments {
+    width: 100%;
+    padding: 0 1rem;
+    margin-top: 0.5rem;
+    font-style: italic;
+    color: #888;
+    text-align: left;
 }

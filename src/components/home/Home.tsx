@@ -39,6 +39,7 @@ const Home: React.FC<Props> = () => {
                         key={index}
                         username={post.username}
                         text={post.text}
+                        date={post.date}
                         likes={post.likes}
                         comments={post.comments}
                     />

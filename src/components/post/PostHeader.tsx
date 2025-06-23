@@ -3,20 +3,22 @@ import './PostHeader.css';
 
 interface Props {
     username: string;
+    date: string;
 }
 
-const PostHeader: React.FC<Props> = ({ username }) => {
-    const currentDate = new Date();
-    const formattedDate = currentDate.toLocaleDateString('en-US', {
-        month: 'short',
-        day: 'numeric',
+const PostHeader: React.FC<Props> = ({ username, date }) => {
+    const formattedDate = new Date(date).toLocaleDateString('en-US', {
         year: 'numeric',
-    });
-    const formattedTime = currentDate.toLocaleTimeString('en-US', {
-        hour: '2-digit',
-        minute: '2-digit',
+        month: 'long',
+        day: 'numeric'
     });
 
+    const formattedTime = new Date(date).toLocaleTimeString('en-US', {
+        hour: '2-digit',
+        minute: '2-digit',
+        hour12: true
+    });
+    
     return (
         <div className="post-header">
             <div className="user-info">

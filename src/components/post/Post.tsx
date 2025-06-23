@@ -1,23 +1,27 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PostHeader from './PostHeader';
-// import PostContent from './PostContent';
 import PostLikesComments from './PostLikesComments';
 import PostDescription from './PostDescription';
+import { CommentProps } from './comment/Comment';
 import './Post.css'; 
 
 interface Props {
     username: string;
     text: string;
+    date: string;
     likes: number;
-    comments: number;
+    comments: CommentProps[];
 }
 
-const Post: React.FC<Props> = ({ username, text, likes, comments }) => {
+const Post: React.FC<Props> = ({ username, text, date, likes, comments }) => {
     return (
         <div className="post-container">
-            <PostHeader username={username} />
+            <PostHeader username={username} date={date} />
             <PostDescription text={text}/>
-            <PostLikesComments likes={likes} comments={comments} />
+            <PostLikesComments 
+                likes={likes} 
+                comments={comments}
+            />
         </div>
     );
 }

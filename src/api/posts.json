@@ -3,20 +3,50 @@
         {
             "username": "eden",
             "text": "This is a post by Eden",
+            "date": "2023-10-01T12:00:00Z",
             "likes": 10,
-            "comments": 2
+            "comments": [
+                {
+                    "username": "john",
+                    "text": "This is a comment by John"
+                },
+                {
+                    "username": "jane",
+                    "text": "This is a comment by Jane"
+                }
+            ]
         },
-        {
+         {
             "username": "eden",
             "text": "This is a post by Eden",
+            "date": "2023-10-01T12:00:00Z",
             "likes": 10,
-            "comments": 2
+            "comments": [
+                {
+                    "username": "john",
+                    "text": "This is a comment by John"
+                },
+                {
+                    "username": "jane",
+                    "text": "This is a comment by Jane"
+                }
+            ]
         },
-        {
+         {
             "username": "eden",
             "text": "This is a post by Eden",
+            "date": "2023-10-01T12:00:00Z",
             "likes": 10,
-            "comments": 2
+            "comments": [
+                {
+                    "username": "john",
+                    "text": "This is a comment by John"
+                },
+                {
+                    "username": "jane",
+                    "text": "This is a comment by Jane"
+                }
+            ]
         }
     ]
 }
