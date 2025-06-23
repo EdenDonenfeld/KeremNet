@@ -7,11 +7,9 @@ import './PostLikesComments.css';
 interface Props {
     likes: number;
     comments: CommentProps[];
-    isCommentsVisible: boolean;
-    toggleComments: () => void;
 }
 
-const PostLikesComments: React.FC<Props> = ({ likes, comments, isCommentsVisible, toggleComments }) => {
+const PostLikesComments: React.FC<Props> = ({ likes, comments }) => {
     return (
         <div className="post-likes-comments-container">
             <div className="post-likes-comments">
@@ -20,23 +18,20 @@ const PostLikesComments: React.FC<Props> = ({ likes, comments, isCommentsVisible
                     <span className="like-count">{likes} likes</span>
                 </div>
 
-                <div className="comments" onClick={toggleComments}>
+                <div className="comments">
                     <FontAwesomeIcon icon={faComment} className="comments-icon" />
                     <span className="comment-count">{comments.length} comments</span>
                 </div>
             </div>
-
-            {isCommentsVisible && comments.length > 0 && (
-                <div className="comments-list-container">
-                    <ul className="comments-list">
-                        {comments.map((comment, index) => (
-                            <li key={index}>
-                                <Comment text={comment.text} username={comment.username} />
-                            </li>
-                        ))}
-                    </ul>
-                </div>
-            )}
+            <div className="comments-list-container">
+                <ul className="comments-list">
+                    {comments.map((comment, index) => (
+                        <li key={index}>
+                            <Comment text={comment.text} username={comment.username} />
+                        </li>
+                    ))}
+                </ul>
+            </div>
         </div>
     );
 };

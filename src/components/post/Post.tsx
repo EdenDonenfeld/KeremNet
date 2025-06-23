@@ -14,7 +14,6 @@ interface Props {
 }
 
 const Post: React.FC<Props> = ({ username, text, date, likes, comments }) => {
-    const [isCommentsVisible, setCommentsVisible] = useState(false);
     return (
         <div className="post-container">
             <PostHeader username={username} date={date} />
@@ -22,8 +21,6 @@ const Post: React.FC<Props> = ({ username, text, date, likes, comments }) => {
             <PostLikesComments 
                 likes={likes} 
                 comments={comments}
-                isCommentsVisible={isCommentsVisible}
-                toggleComments={() => setCommentsVisible(prev => !prev)} 
             />
         </div>
     );
