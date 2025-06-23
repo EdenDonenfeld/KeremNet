@@ -1,4 +1,5 @@
 import React from 'react';
+import './PostDescription.css';
 
 interface Props {
     text: string;
