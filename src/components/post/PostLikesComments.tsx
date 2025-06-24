@@ -5,6 +5,7 @@ import { faHeart as regularHeart } from '@fortawesome/free-regular-svg-icons';
 import { faComment as solidComment } from '@fortawesome/free-solid-svg-icons';
 import { faComment as regularComment } from '@fortawesome/free-regular-svg-icons';
 import Comment, { CommentProps } from './comment/Comment';
+import CommentAdder from './comment/CommentAdder';
 import './PostLikesComments.css';
 
 interface Props {
@@ -70,20 +71,13 @@ const PostLikesComments: React.FC<Props> = ({ username, likes, comments }) => {
                     ))}
                 </ul>
                 )}
-                <div className="add-comment">
-                    <input 
-                        type="text" 
-                        placeholder="Add a comment..." 
-                        name="comment"
-                        className="comment-input"
-                        value={commentText}
-                        onChange={(e) => setCommentText(e.target.value)}
-                    />
-                    <button className="comment-button" onClick={() => addComment(commentText, username)}>
-                        Post
-                    </button>
-                </div>
             </div>
+            <CommentAdder 
+                commentText={commentText} 
+                username={username} 
+                setCommentText={setCommentText} 
+                addComment={addComment}
+            />
         </div>
     );
 };
