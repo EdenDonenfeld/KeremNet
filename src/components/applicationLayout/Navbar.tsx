@@ -6,7 +6,7 @@ const Navbar = () => {
     <Box sx={{ backgroundColor: '#ECC9EE', px: 2, py: 1 }}>
       <Stack direction="row" spacing={4} justifyContent="center">
         <Button color="secondary" variant="text" component={Link} to="/">Home</Button>
-        <Button color="secondary" variant="text" component={Link} to="/profile">Profile</Button>
+        <Button color="secondary" variant="text" component={Link} to="/chosen-post">Chosen Post</Button>
       </Stack>
     </Box>
   );

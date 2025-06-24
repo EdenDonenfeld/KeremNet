@@ -13,7 +13,7 @@ const App = () => {
         <ApplicationLayout>
             <Routes>
               <Route path="/" element={<Home />} />
-              <Route path="/profile" element={<Home />} />
+              <Route path="/chosen-post" element={<Home />} />
             </Routes>
         </ApplicationLayout>
       </BrowserRouter>
