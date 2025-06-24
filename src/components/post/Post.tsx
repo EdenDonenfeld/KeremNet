@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import PostHeader from './PostHeader';
 import PostLikesComments from './PostLikesComments';
 import PostDescription from './PostDescription';
@@ -19,6 +19,7 @@ const Post: React.FC<Props> = ({ username, text, date, likes, comments }) => {
             <PostHeader username={username} date={date} />
             <PostDescription text={text}/>
             <PostLikesComments 
+                username={username}
                 likes={likes} 
                 comments={comments}
             />

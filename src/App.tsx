@@ -14,7 +14,6 @@ const App = () => {
         likes={10}
         comments={[
           { text: "Great post!", username: "alice" },
-          { text: "I love this, so inspiring!", username: "bob" }
         ]}
       />
       <Post 
