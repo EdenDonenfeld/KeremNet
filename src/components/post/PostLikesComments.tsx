@@ -18,7 +18,6 @@ const PostLikesComments: React.FC<Props> = ({ username, likes, comments }) => {
     const [likesCount, setLikesCount] = useState<number>(likes);
     const [isLiked, setIsLiked] = useState<boolean>(false);
     const [commentsList, setCommentsList] = useState<CommentProps[]>(comments);
-    const [commentText, setCommentText] = useState<string>('');
     const [isCommentsVisible, setIsCommentsVisible] = useState<boolean>(false);
 
     const toggleLike = () => {
@@ -36,7 +35,6 @@ const PostLikesComments: React.FC<Props> = ({ username, likes, comments }) => {
         }
         const newComment: CommentProps = { text, username };
         setCommentsList([...commentsList, newComment]);
-        setCommentText('');
         setIsCommentsVisible(true);
     };
 
@@ -79,9 +77,7 @@ const PostLikesComments: React.FC<Props> = ({ username, likes, comments }) => {
                 )}
             </div>
             <CommentAdder 
-                commentText={commentText} 
                 username={username} 
-                setCommentText={setCommentText} 
                 addComment={addComment}
             />
         </div>

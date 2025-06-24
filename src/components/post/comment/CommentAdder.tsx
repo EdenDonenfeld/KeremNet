@@ -1,14 +1,22 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './CommentAdder.css';
 
 interface Props {
-    commentText: string;
     username: string;
-    setCommentText: (text: string) => void;
     addComment: (text: string, username: string) => void;
 }
 
-const CommentAdder: React.FC<Props> = ({ commentText, username, setCommentText, addComment }) => {
+const CommentAdder: React.FC<Props> = ({ username, addComment }) => {
+    const [commentText, setCommentText] = useState('');
+
+    const handleCommentAddition = () => {
+        if (commentText.trim() === '') {
+            return;
+        }
+        addComment(commentText, username);
+        setCommentText('');
+    }
+
     return (
         <div className="add-comment">
             <input 
@@ -19,7 +27,7 @@ const CommentAdder: React.FC<Props> = ({ commentText, username, setCommentText, 
                 value={commentText}
                 onChange={(e) => setCommentText(e.target.value)}
             />
-            <button className="comment-button" onClick={() => addComment(commentText, username)}>
+            <button className="comment-button" onClick={() => handleCommentAddition()}>
                 Post
             </button>
         </div>
