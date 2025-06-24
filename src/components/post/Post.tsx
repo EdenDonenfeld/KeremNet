@@ -19,6 +19,7 @@ const Post: React.FC<Props> = ({ username, text, date, likes, comments }) => {
             <PostHeader username={username} date={date} />
             <PostDescription text={text}/>
             <PostLikesComments 
+                username={username}
                 likes={likes} 
                 comments={comments}
             />

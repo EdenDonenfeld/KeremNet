@@ -15,10 +15,11 @@
 
 
 .posts-container {
+    text-align: center;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    align-items: stretch;
+    align-items: flex-start;
     justify-content: center;
     gap: 1rem;
 }
