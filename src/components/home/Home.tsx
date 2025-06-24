@@ -3,11 +3,7 @@ import Post, { PostProps } from '../post/Post';
 import { fetchPosts } from '../../services/FetchPosts'
 import './Home.css';
 
-interface Props {
-    postsFromJson: PostProps[];
-}
-
-const Home: React.FC<Props> = () => {
+const Home: React.FC = () => {
     const [posts, setPosts] = useState<PostProps[]>([]);
 
     useEffect(() => {
