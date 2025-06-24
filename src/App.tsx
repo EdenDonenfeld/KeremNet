@@ -14,7 +14,7 @@ const App = () => {
         <ApplicationLayout>
             <Routes>
               <Route path="/" element={<Home />} />
-              <Route path="/chosen-post" element={<ChosenPost />} />
+              <Route path="/chosen-post/:encodedPost" element={<ChosenPost />} />
             </Routes>
         </ApplicationLayout>
       </BrowserRouter>
