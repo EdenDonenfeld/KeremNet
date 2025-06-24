@@ -1,0 +1,38 @@
+.add-comment {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 0 1rem;
+    margin-top: 1rem;
+    gap: 1rem;
+}
+
+.comment-input {
+    padding: 0.5rem;
+    width: 100%;
+    border: 1px solid #ddd;
+    border-radius: 0.5rem;
+    font-size: 0.75rem;
+}
+
+.comment-input:focus {
+    outline: none;
+    border-color: #555;
+}
+
+.comment-button {
+    padding: 0.5rem 1rem;
+    background-color: #2196f3;
+    color: white;
+    border: 1px solid #2196f3;
+    border-radius: 0.5rem;
+    font-size: 0.75rem;
+    cursor: pointer;
+}
+
+.comment-button:focus {
+    outline: none;
+    border: 1px solid #555;
+}
