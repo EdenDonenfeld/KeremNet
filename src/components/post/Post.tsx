@@ -3,6 +3,7 @@ import PostHeader from './PostHeader';
 import PostLikesComments from './PostLikesComments';
 import PostDescription from './PostDescription';
 import { CommentProps } from './comment/Comment';
+import { useNavigate } from 'react-router-dom';
 import './Post.css'; 
 
 interface Props {
@@ -15,9 +16,12 @@ interface Props {
 }
 
 const Post: React.FC<Props> = ({ id, username, text, date, likes, comments }) => {
+    const navigate = useNavigate();
 
     const handlePostClick = () => {
-        console.log(`Post clicked: ${id}`);
+        navigate('/chosen-post', {
+            state: { id, username, text, date, likes, comments }
+        });
     };
 
     return (
