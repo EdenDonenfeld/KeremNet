@@ -1,9 +1,0 @@
-.application-layout {
-  display: flex;
-  flex-direction: column;
-  height: 100vh;
-}
-
-.application-layout * {
-    box-sizing: border-box;
-}

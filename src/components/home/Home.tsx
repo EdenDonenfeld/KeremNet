@@ -25,7 +25,6 @@ const Home: React.FC = () => {
 
     return (
         <div className="home-container">
-            <h1 className="title">KeremNet</h1>
             {loading && <p>Loading posts...</p>}
             {errorText && <p className="error-message">{errorText}</p>}
             {!loading && !errorText && (
