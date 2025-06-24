@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import './Home.css';
 import Post, { PostProps } from '../post/Post';
+import { fetchPosts } from '../../services/FetchPosts'
+import './Home.css';
 
 interface Props {
     postsFromJson: PostProps[];
@@ -9,22 +10,13 @@ interface Props {
 const Home: React.FC<Props> = () => {
     const [posts, setPosts] = useState<PostProps[]>([]);
 
-    const fetchAllPosts = async () => {
-        try {
-            const response = await fetch('http://localhost:5000/posts');
-            if (!response.ok) {
-                throw new Error('Network response was not ok');
-            }
-            const data = await response.json();
-            setPosts(data);
-        } catch (error) {
-            console.error('Failed to fetch posts:', error);
-        }
-    }
-
     useEffect(() => {
         try {
-            fetchAllPosts();
+            const loadPosts = async () => {
+                const fetchedPosts = await fetchPosts();
+                setPosts(fetchedPosts);
+            };
+            loadPosts();
         } catch (error) {
             console.error('Error fetching posts:', error);
         }
@@ -34,9 +26,10 @@ const Home: React.FC<Props> = () => {
         <div className="home-container">
             <h1 className="title">KeremNet</h1>
             <div className="posts-container">
-                {posts.map((post, index) => (
+                {posts.map((post, _) => (
                     <Post
-                        key={index}
+                        key={post.id}
+                        id={post.id}
                         username={post.username}
                         text={post.text}
                         date={post.date}

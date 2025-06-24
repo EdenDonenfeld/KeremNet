@@ -6,6 +6,7 @@ import { CommentProps } from './comment/Comment';
 import './Post.css'; 
 
 interface Props {
+    id: string;
     username: string;
     text: string;
     date: string;
@@ -13,7 +14,7 @@ interface Props {
     comments: CommentProps[];
 }
 
-const Post: React.FC<Props> = ({ username, text, date, likes, comments }) => {
+const Post: React.FC<Props> = ({ id, username, text, date, likes, comments }) => {
     return (
         <div className="post-container">
             <PostHeader username={username} date={date} />

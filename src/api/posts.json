@@ -1,6 +1,7 @@
 {
     "posts": [
         {
+            "id": "1",
             "username": "eden",
             "text": "This is a post by Eden",
             "date": "2023-10-01T12:00:00Z",
@@ -17,14 +18,15 @@
             ]
         },
         {
-            "username": "eden",
-            "text": "This is a post by Eden",
+            "id": "2",
+            "username": "john",
+            "text": "This is a post by John",
             "date": "2023-10-01T12:00:00Z",
             "likes": 10,
             "comments": [
                 {
-                    "username": "john",
-                    "text": "This is a comment by John"
+                    "username": "eden",
+                    "text": "This is a comment by eden"
                 },
                 {
                     "username": "jane",
@@ -33,8 +35,9 @@
             ]
         },
         {
-            "username": "eden",
-            "text": "This is a post by Eden",
+            "id": "3",
+            "username": "jane",
+            "text": "This is a post by Jane",
             "date": "2023-10-01T12:00:00Z",
             "likes": 10,
             "comments": [
@@ -43,40 +46,12 @@
                     "text": "This is a comment by John"
                 },
                 {
-                    "username": "jane",
-                    "text": "This is a comment by Jane"
-                }
-            ]
-        },
-        {
-            "username": "eden",
-            "text": "This is a post by Eden",
-            "date": "2023-10-01T12:00:00Z",
-            "likes": 10,
-            "comments": [
-                {
-                    "username": "john",
-                    "text": "This is a comment by John"
+                    "username": "eden",
+                    "text": "This is a comment by Eden"
                 },
                 {
-                    "username": "jane",
-                    "text": "This is a comment by Jane"
-                }
-            ]
-        },
-        {
-            "username": "eden",
-            "text": "This is a post by Eden",
-            "date": "2023-10-01T12:00:00Z",
-            "likes": 10,
-            "comments": [
-                {
-                    "username": "john",
-                    "text": "This is a comment by John"
-                },
-                {
-                    "username": "jane",
-                    "text": "This is a comment by Jane"
+                    "username": "jane's mom",
+                    "text": "This is a comment by Jane's mom"
                 }
             ]
         }
