@@ -25,8 +25,8 @@ const Post: React.FC<Props> = ({ id, username, text, date, likes, comments }) =>
     };
 
     return (
-        <div className="post-container" onClick={() => handlePostClick()}>
-            <PostHeader username={username} date={date} />
+        <div className="post-container">
+            <PostHeader username={username} date={date}/>
             <PostDescription text={text}/>
             <PostLikesComments 
                 username={username}
