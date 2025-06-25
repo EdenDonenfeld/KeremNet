@@ -4,9 +4,9 @@ import { PostProps } from '../components/post/Post';
 
 const API_URL = 'http://localhost:5000/posts';
 
-export const usePosts = () => {
+export const usePostById = (id: string | undefined) => {
     return useQuery({
-        queryKey: ['posts'],
-        queryFn: () => fetchData<PostProps[]>(API_URL)
+        queryKey: ['posts', id],
+        queryFn: () => fetchData<PostProps>(`${API_URL}/${id}`)
     });
-}
+};

@@ -9,7 +9,7 @@ const ApplicationLayout: React.FC<{ children: React.ReactNode }> = ({ children }
     <Box display="flex" flexDirection="column" minHeight="100vh">
       <Header />
       <Navbar />
-      <Box sx={{ backgroundColor: '#fff8e1', p: 3 }}>
+      <Box sx={{ backgroundColor: '#fff8e1', p: 3, flex: 1}}>
         {children}
       </Box>
       <Footer />

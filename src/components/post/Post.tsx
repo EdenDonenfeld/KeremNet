@@ -5,7 +5,6 @@ import PostDescription from './PostDescription';
 import { CommentProps } from './comment/Comment';
 import { useNavigate } from 'react-router-dom';
 import './Post.css'; 
-import { encode } from 'punycode';
 
 interface Props {
     id: string;
@@ -18,11 +17,9 @@ interface Props {
 
 const Post: React.FC<Props> = ({ id, username, text, date, likes, comments }) => {
     const navigate = useNavigate();
-    const post: Props = { id, username, text, date, likes, comments };
 
     const handlePostClick = () => {
-        const encodedPost = encodeURIComponent(JSON.stringify(post));
-        navigate(`/chosen-post/${encodedPost}`);
+        navigate(`/posts/${id}`);
     };
 
     return (
