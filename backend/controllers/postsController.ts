@@ -6,7 +6,11 @@ export const getAllPosts = (req: Request, res: Response) => {
         const posts = fetchAllPosts();
         res.status(200).json(posts);
     } catch (error) {
-        res.status(500).json({ error: 'Failed to fetch posts' });
+        if (error instanceof Error) {
+            res.status(404).json({ error: error.message });
+        } else {
+            res.status(500).json({ error: 'An unknown error occurred' });
+        }
     }
 }
 
@@ -16,7 +20,11 @@ export const getPostById = (req: Request, res: Response) => {
         const post = fetchPostById(postId);
         res.status(200).json(post);
     } catch (error) {
-        res.status(404).json({ error: 'Post not found' });
+        if (error instanceof Error) {
+            res.status(404).json({ error: error.message });
+        } else {
+            res.status(500).json({ error: 'An unknown error occurred' });
+        }
     }
 }
 
@@ -26,6 +34,10 @@ export const getPostsByUserId = (req: Request, res: Response) => {
         const posts = fetchAllUsersPosts(userId);
         res.status(200).json(posts);
     } catch (error) {
-        res.status(404).json({ error: 'No posts found for this user' });
+        if (error instanceof Error) {
+            res.status(404).json({ error: error.message });
+        } else {
+            res.status(500).json({ error: 'An unknown error occurred' });
+        }
     }
 }

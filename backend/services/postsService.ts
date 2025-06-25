@@ -1,10 +1,10 @@
-import { posts } from '../api/posts.json';
+import { posts } from '../api/data';
 
-export const fetchAllPosts = () => {
+export const fetchAllPosts = (): Object => {
     return posts;
 }
 
-export const fetchPostById = (id: string) => {
+export const fetchPostById = (id: string): Object | Error => {
     const post = posts.find(post => post.id === id);
     
     if (post) {
@@ -14,7 +14,7 @@ export const fetchPostById = (id: string) => {
     }
 }
 
-export const fetchAllUsersPosts = (userId: string) => {
+export const fetchAllUsersPosts = (userId: string): Object | Error => {
     const userPosts = posts.filter(post => post.id === userId);
     
     if (userPosts.length > 0) {

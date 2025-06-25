@@ -1,10 +1,10 @@
-import { users } from '../api/users.json';
+import { users } from '../api/data';
 
-export const fetchAllUsers = () => {
+export const fetchAllUsers = (): Object => {
     return users;
 }
 
-export const fetchUserById = (id: string) => {
+export const fetchUserById = (id: string): Object | Error => {
     const post = users.find(user => user.id === id);
     
     if (post) {
