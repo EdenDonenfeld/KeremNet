@@ -33,6 +33,7 @@ const AddPost: React.FC = () => {
                 label="Username"
                 variant="standard"
                 margin="normal"
+                required
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
               />
@@ -41,6 +42,7 @@ const AddPost: React.FC = () => {
                 label="Post Content"
                 variant="outlined"
                 multiline
+                required
                 rows={4}
                 margin="normal"
                 value={content}
