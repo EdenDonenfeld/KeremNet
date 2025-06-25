@@ -7,8 +7,8 @@ const app = express();
 const PORT = 3000;
 
 const buildPath = path.join(__dirname, '../frontend/build');
-
 app.use(express.static(buildPath));
+app.use('/images', express.static(path.join(__dirname, 'images')));
 
 app.get('/', (req, res) => {
     res.sendFile(path.join(buildPath, 'index.html'));
