@@ -1,4 +1,23 @@
-export const posts = 
+type Post = {
+    id: string;
+    username: string;
+    text: string;
+    date: string;
+    likes: number;
+    comments: {
+        username: string;
+        text: string;
+    }[];
+};
+
+type User = {
+    id: string;
+    username: string;
+    createdAt: string;
+    postsIds: string[];
+};
+
+export const posts: Post[] = 
 [
     {
         "id": "1",
@@ -57,7 +76,7 @@ export const posts =
     }
 ];
 
-export const users =
+export const users: User[] =
 [
     {
         "id": "1",
