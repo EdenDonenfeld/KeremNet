@@ -1,7 +1,7 @@
 import express from 'express';
 import path from 'path';
-import { posts } from './api/posts.json';
-import { users } from './api/users.json';
+import { getAllPosts, getPostById } from './controllers/postsController';
+import { getAllUsers, getUserById, getUsersPosts } from './controllers/usersController';
 
 const app = express();
 const PORT = 3000;
@@ -15,47 +15,24 @@ app.get('/', (req, res) => {
 });
 
 app.get('/posts', (req, res) => {
-    res.json(posts);
+    getAllPosts(req, res);
 });
 
 app.get('/posts/:id', (req, res) => {
-    const postId = req.params.id;
-    const post = posts.find(p => p.id === postId);
-    
-    if (post) {
-        res.json(post);
-    } else {
-        res.status(404).json({ error: 'Post not found' });
-    }
+    getPostById(req, res);
 });
 
 app.get('/users', (req, res) => {
-    res.json(users);
+    getAllUsers(req, res);
 });
 
 app.get('/users/:id', (req, res) => {
-    const userId = req.params.id;
-    const user = users.find(u => u.id === userId);
-    
-    if (user) {
-        res.json(user);
-    } else {
-        res.status(404).json({ error: 'User not found' });
-    }
+    getUserById(req, res);
 });
-
 
 app.get('/users/:id/posts', (req, res) => {
-    const userId = req.params.id;
-    const userPosts = posts.filter(post => post.id === userId);
-
-    if (userPosts.length > 0) {
-        res.json(userPosts);
-    } else {
-        res.status(404).json({ error: 'No posts found for this user' });
-    }
+    getUsersPosts(req, res);
 });
-
 
 app.listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}`);
