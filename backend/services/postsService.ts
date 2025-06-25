@@ -1,4 +1,4 @@
-import { posts } from '../api/data';
+import { posts, Post } from '../api/data';
 
 export const fetchAllPosts = () => {
     if (posts && posts.length > 0) {
@@ -26,4 +26,13 @@ export const fetchAllUsersPosts = (postIds: string[]) => {
     } else {
         throw new Error('No posts found for this user');
     }
+}
+
+export const uploadPost = (newPost: Post) => {
+    if (!newPost || !newPost.id || !newPost.username || !newPost.text) {
+        throw new Error('Invalid post data');
+    }
+
+    posts.push(newPost);
+    return newPost;
 }

@@ -1,6 +1,6 @@
 import express from 'express';
 import path from 'path';
-import { getAllPosts, getPostById, getPostsByUserId } from './controllers/postsController';
+import { getAllPosts, getPostById, getPostsByUserId, createPost } from './controllers/postsController';
 import { getAllUsers, getUserById } from './controllers/usersController';
 
 const app = express();
@@ -35,6 +35,10 @@ app.get('/users/:id', (req, res) => {
 
 app.get('/users/:id/posts', (req, res) => {
     getPostsByUserId(req, res);
+});
+
+app.post('/posts', express.json(), (req, res) => {
+    createPost(req, res);
 });
 
 app.get(/(.*)/, (req, res) => {
