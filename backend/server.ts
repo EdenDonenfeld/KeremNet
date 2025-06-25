@@ -4,11 +4,11 @@ import { getAllPosts, getPostById } from './controllers/postsController';
 import { getAllUsers, getUserById, getUsersPosts } from './controllers/usersController';
 
 const app = express();
-const PORT = 3000;
+const PORT = 3001;
 
 const buildPath = path.join(__dirname, '../frontend/build');
 
-app.use('/static', express.static(buildPath));
+app.use(express.static(buildPath));
 
 app.get('/', (req, res) => {
     res.sendFile(path.join(buildPath, 'index.html'));
