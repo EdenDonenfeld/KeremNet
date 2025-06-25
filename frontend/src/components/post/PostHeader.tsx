@@ -1,7 +1,7 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser } from '@fortawesome/free-solid-svg-icons';
-import { usePost } from '../../hooks/usePost';
+import { useImageValidation } from '../../hooks/useImageValidation';
 import './PostHeader.css';
 
 interface Props {
@@ -11,7 +11,7 @@ interface Props {
 }
 
 const PostHeader: React.FC<Props> = ({ username, date, userId }) => {
-    const { imageExists } = usePost(`/images/users/${userId}.png`);
+    const { imageExists } = useImageValidation(`/images/users/${userId}.png`);
 
     const formattedDate = new Date(date).toLocaleDateString('en-US', {
         year: 'numeric',

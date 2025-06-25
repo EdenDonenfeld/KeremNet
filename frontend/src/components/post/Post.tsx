@@ -5,7 +5,7 @@ import PostDescription from './PostDescription';
 import PostImage from './PostImage';
 import { CommentProps } from './comment/Comment';
 import { useNavigate } from 'react-router-dom';
-import { usePost } from '../../hooks/usePost';
+import { useImageValidation } from '../../hooks/useImageValidation';
 import './Post.css'; 
 
 interface Props {
@@ -19,7 +19,7 @@ interface Props {
 
 const Post: React.FC<Props> = ({ id, username, text, date, likes, comments }) => {
     const navigate = useNavigate();
-    const { imageExists } = usePost(`/images/posts/${id}.png`);
+    const { imageExists } = useImageValidation(`/images/posts/${id}.png`);
 
     const handlePostClick = () => {
         navigate(`/posts/${id}`);
