@@ -8,7 +8,7 @@ const PORT = 3000;
 
 const buildPath = path.join(__dirname, '../frontend/build');
 
-app.use(express.static(buildPath));
+app.use('/static', express.static(buildPath));
 
 app.get('/', (req, res) => {
     res.sendFile(path.join(buildPath, 'index.html'));
