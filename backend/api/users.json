@@ -1,0 +1,22 @@
+{
+    "users": [
+        {
+            "id": "1",
+            "username": "eden",
+            "createdAt": "2025-01-25T12:00:00Z",
+            "postsIds": ["1"]
+        },
+        {
+            "id": "2",
+            "username": "john",
+            "createdAt": "2025-01-25T12:00:00Z",
+            "postsIds": ["2"]
+        },
+        {
+            "id": "3",
+            "username": "jane",
+            "createdAt": "2025-01-25T12:00:00Z",
+            "postsIds": ["3"]
+        }
+    ]
+}
