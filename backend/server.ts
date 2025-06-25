@@ -1,11 +1,16 @@
-const express = require('express');
-const path = require('path');
+// backend/server.ts
+import express from 'express';
+import path from 'path';
+
 const app = express();
+const PORT = 3001;
 
-const port = 3000;
+app.use(express.json());
 
-app.use('/static', express.static(path.join(__dirname, 'public')));
+app.get('/', (req, res) => {
+  res.send("Welcome to the backend server!");   
+});
 
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '../src/', 'index.html'));
+app.listen(PORT, () => {
+  console.log(`Server is running on http://localhost:${PORT}`);
 });
