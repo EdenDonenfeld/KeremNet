@@ -3,12 +3,14 @@ import express from 'express';
 import path from 'path';
 
 const app = express();
-const PORT = 3001;
+const PORT = 3000;
 
-app.use(express.json());
+const buildPath = path.join(__dirname, '../frontend/build');
+
+app.use(express.static(buildPath));
 
 app.get('/', (req, res) => {
-  res.send("Welcome to the backend server!");   
+  res.sendFile(path.join(buildPath, 'index.html'));
 });
 
 app.listen(PORT, () => {
