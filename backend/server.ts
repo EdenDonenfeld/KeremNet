@@ -1,7 +1,7 @@
 import express from 'express';
 import path from 'path';
-import { getAllPosts, getPostById } from './controllers/postsController';
-import { getAllUsers, getUserById, getUsersPosts } from './controllers/usersController';
+import { getAllPosts, getPostById, getPostsByUserId } from './controllers/postsController';
+import { getAllUsers, getUserById } from './controllers/usersController';
 
 const app = express();
 const PORT = 3001;
@@ -31,7 +31,7 @@ app.get('/users/:id', (req, res) => {
 });
 
 app.get('/users/:id/posts', (req, res) => {
-    getUsersPosts(req, res);
+    getPostsByUserId(req, res);
 });
 
 app.listen(PORT, () => {

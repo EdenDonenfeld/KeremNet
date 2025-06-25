@@ -13,3 +13,13 @@ export const fetchPostById = (id: string) => {
         throw new Error('Post not found');
     }
 }
+
+export const fetchAllUsersPosts = (userId: string) => {
+    const userPosts = posts.filter(post => post.id === userId);
+    
+    if (userPosts.length > 0) {
+        return userPosts;
+    } else {
+        throw new Error('No posts found for this user');
+    }
+}
