@@ -4,7 +4,7 @@ import { getAllPosts, getPostById, getPostsByUserId } from './controllers/postsC
 import { getAllUsers, getUserById } from './controllers/usersController';
 
 const app = express();
-const PORT = 3001;
+const PORT = 3000;
 
 const buildPath = path.join(__dirname, '../frontend/build');
 
