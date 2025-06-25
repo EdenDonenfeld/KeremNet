@@ -1,6 +1,6 @@
 import axios from "axios";
 
-export const uploadPost = async <T>(API_URL: string, data: T): Promise<T> => {
+export const createPost = async <T>(API_URL: string, data: T): Promise<T> => {
     const response = await axios.post<T>(API_URL, data, {
         headers: {
             'Content-Type': 'application/json'
