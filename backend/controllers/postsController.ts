@@ -1,5 +1,6 @@
 import { Request, Response } from "express";
 import { fetchAllPosts, fetchPostById, fetchAllUsersPosts  } from "../services/postsService";
+import { fetchUserPostIds } from "../services/usersService";
 
 export const getAllPosts = (req: Request, res: Response) => {
     try {
@@ -31,7 +32,8 @@ export const getPostById = (req: Request, res: Response) => {
 export const getPostsByUserId = (req: Request, res: Response) => {
     const userId = req.params.id;
     try {
-        const posts = fetchAllUsersPosts(userId);
+        const postIds = fetchUserPostIds(userId);
+        const posts = fetchAllUsersPosts(postIds);
         res.status(200).json(posts);
     } catch (error) {
         if (error instanceof Error) {

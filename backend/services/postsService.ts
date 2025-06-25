@@ -1,10 +1,14 @@
 import { posts } from '../api/data';
 
-export const fetchAllPosts = (): Object => {
-    return posts;
+export const fetchAllPosts = () => {
+    if (posts && posts.length > 0) {
+        return posts;
+    } else {
+        throw new Error('No posts found');
+    }
 }
 
-export const fetchPostById = (id: string): Object | Error => {
+export const fetchPostById = (id: string) => {
     const post = posts.find(post => post.id === id);
     
     if (post) {
@@ -14,9 +18,9 @@ export const fetchPostById = (id: string): Object | Error => {
     }
 }
 
-export const fetchAllUsersPosts = (userId: string): Object | Error => {
-    const userPosts = posts.filter(post => post.id === userId);
-    
+export const fetchAllUsersPosts = (postIds: string[]) => {
+    const userPosts = posts.filter(post => postIds.includes(post.id));
+
     if (userPosts.length > 0) {
         return userPosts;
     } else {

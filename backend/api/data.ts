@@ -63,7 +63,7 @@ export const users =
         "id": "1",
         "username": "eden",
         "createdAt": "2025-01-25T12:00:00Z",
-        "postsIds": ["1"]
+        "postsIds": ["1", "3"]
     },
     {
         "id": "2",
