@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import PostHeader from './PostHeader';
 import PostLikesComments from './PostLikesComments';
 import PostDescription from './PostDescription';

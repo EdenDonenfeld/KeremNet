@@ -6,6 +6,9 @@ import { getAllUsers, getUserById } from './controllers/usersController';
 const app = express();
 const PORT = 3000;
 
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'ejs');
+
 const buildPath = path.join(__dirname, '../frontend/build');
 app.use(express.static(buildPath));
 app.use('/images', express.static(path.join(__dirname, 'images')));
