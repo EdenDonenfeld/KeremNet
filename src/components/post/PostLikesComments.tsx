@@ -45,7 +45,10 @@ const PostLikesComments: React.FC<Props> = ({ username, likes, comments }) => {
                     <FontAwesomeIcon 
                         icon={isLiked ? solidHeart : regularHeart} 
                         className="likes-icon"
-                        onClick={toggleLike}
+                        onClick={(e) => {
+                            e.stopPropagation();
+                            toggleLike();
+                        }}
                     />
                     <span className="like-count">{likesCount} likes</span>
                 </div>
@@ -54,7 +57,10 @@ const PostLikesComments: React.FC<Props> = ({ username, likes, comments }) => {
                     <FontAwesomeIcon 
                         icon={isCommentsVisible ? solidComment : regularComment} 
                         className="comments-icon" 
-                        onClick={() => setIsCommentsVisible(!isCommentsVisible)}
+                        onClick={(e) => {
+                            e.stopPropagation();
+                            setIsCommentsVisible(!isCommentsVisible)
+                        }}
                     />
                     <span className="comment-count">{commentsList.length} comments</span>
                 </div>

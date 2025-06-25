@@ -25,9 +25,15 @@ const CommentAdder: React.FC<Props> = ({ username, addComment }) => {
                 name="comment"
                 className="comment-input"
                 value={commentText}
+                onClick={(e) => e.stopPropagation()}
                 onChange={(e) => setCommentText(e.target.value)}
             />
-            <button className="comment-button" onClick={() => handleCommentAddition()}>
+            <button className="comment-button" 
+                onClick={(e) => {
+                    e.stopPropagation();
+                    handleCommentAddition()
+                }}
+            >
                 Post
             </button>
         </div>
