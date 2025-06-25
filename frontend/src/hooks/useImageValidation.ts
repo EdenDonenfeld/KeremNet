@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 
-export const usePost = (imageSrc: string) => {
+export const useImageValidation = (imageSrc: string) => {
     const [imageExists, setImageExists] = useState<boolean>(false);
 
     useEffect(() => {
