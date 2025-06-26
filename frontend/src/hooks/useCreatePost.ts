@@ -1,8 +1,7 @@
 import { useMutation } from '@tanstack/react-query';
 import { createPost } from '../services/CreatePost';
 import { PostProps } from '../components/post/Post';
-
-const API_URL = 'http://localhost:3000/posts';
+import { API_URL } from '../consts/apiRoute';
 
 export const useCreatePost = (options?: {
   onError?: (error: any) => void;
@@ -10,7 +9,7 @@ export const useCreatePost = (options?: {
 }) => {
   return useMutation({
     mutationFn: (newPost: Pick<PostProps, 'text'>) =>
-      createPost(API_URL, newPost),
+      createPost(`${API_URL}/posts`, newPost),
     ...options,
   });
 };
