@@ -2,9 +2,20 @@ import bcrypt from 'bcrypt';
 import { v4 as uuidv4 } from 'uuid';
 import { users, User } from '../api/data';
 
+type AuthenticationResponse = {
+  status: number;
+  data: {
+    message: string;
+    user?: {
+      id: string;
+      username: string;
+    };
+  }
+}
+
 const SALT_ROUNDS = 10;
 
-export const register = async (username: string, password: string): Promise<{ status: number, data: any }> => {
+export const register = async (username: string, password: string): Promise<AuthenticationResponse> => {
   const existUser = users.find(user => user.username === username);
   if (existUser) {
     return { status: 400, data: { message: 'Username already exists' } };
@@ -25,7 +36,7 @@ export const register = async (username: string, password: string): Promise<{ st
   }
 };
 
-export const login = async (username: string, password: string): Promise<{ status: number, data: any }> => {
+export const login = async (username: string, password: string): Promise<AuthenticationResponse> => {
   const user = users.find(user => user.username === username);
   if (!user) {
     return { status: 400, data: { message: 'Invalid username or password' } };
