@@ -9,7 +9,7 @@ export const useCreatePost = (options?: {
   onSuccess?: () => void;
 }) => {
   return useMutation({
-    mutationFn: (newPost: Pick<PostProps, 'username' | 'text'>) =>
+    mutationFn: (newPost: Pick<PostProps, 'text'>) =>
       createPost(API_URL, newPost),
     ...options,
   });

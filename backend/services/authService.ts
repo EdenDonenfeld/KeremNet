@@ -20,7 +20,7 @@ export const register = async (username: string, password: string): Promise<{ st
       postsIds: []
     };
     users.push(newUser);
-    return { status: 200, data: { message: 'User registered successfully', user: { id: newUser.id } } };
+    return { status: 200, data: { message: 'User registered successfully', user: { id: newUser.id, username: newUser.username } } };
   } catch (error) {
     return { status: 500, data: { message: 'Could not register user' } };
   }
@@ -37,7 +37,7 @@ export const login = async (username: string, password: string): Promise<{ statu
     if (!isPasswordValid) {
       return { status: 400, data: { message: 'Invalid username or password' } };
     }
-    return { status: 200, data: { message: 'Login successful', user: { id: user.id } } };
+    return { status: 200, data: { message: 'Login successful', user: { id: user.id, username: user.username } } };
   } catch (error) {
     return { status: 500, data: { message: 'Could not log in' } };
   }

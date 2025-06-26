@@ -4,7 +4,6 @@ import { Box, Typography, TextField, Button } from '@mui/material';
 import { PostProps } from '../../post/Post';
 
 const AddPost: React.FC = () => {
-    const [username, setUsername] = useState<string>('');
     const [content, setContent] = useState<string>('');
     const [errorMessage, setErrorMessage] = useState<string | null>(null);
     const [hasError, setHasError] = useState<boolean>(false);
@@ -23,8 +22,7 @@ const AddPost: React.FC = () => {
     const createPost = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 
-        const newPost: Pick<PostProps, 'username' | 'text'> = {
-            username,
+        const newPost: Pick<PostProps, 'text'> = {
             text: content,
         };
         mutate(newPost);
@@ -46,15 +44,6 @@ const AddPost: React.FC = () => {
                 Add a New Post
             </Typography>
             <form onSubmit={createPost}>
-                <TextField
-                    fullWidth
-                    label="Username"
-                    variant="standard"
-                    margin="normal"
-                    required
-                    value={username}
-                    onChange={(e) => setUsername(e.target.value)}
-                />
                 <TextField
                     fullWidth
                     label="Post Content"

@@ -53,15 +53,17 @@ export const createPost = (req: Request, res: Response): void => {
             return;
         }
 
-        const { username, text } = req.body;
+        const { text } = req.body;
         const newPost = {
             id: Math.floor(Math.random() * 1000000).toString(),
-            username: username,
+            username: req.session.user || 'Anonymous',
             text: text,
             date: new Date().toISOString(),
             likes: 0,
             comments: []
         }
+
+        console.log('Creating post:', newPost);
         
         const createdPost = uploadPost(newPost);
         res.status(200).json(createdPost);
