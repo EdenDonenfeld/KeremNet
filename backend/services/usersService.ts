@@ -17,13 +17,3 @@ export const fetchUserById = (id: string) => {
         throw new Error('Post not found');
     }
 }
-
-export const fetchUserPostIds = (id: string) => {
-    const user = users.find(user => user.id === id);
-    
-    if (user && user.postsIds) {
-        return user.postsIds;
-    } else {
-        throw new Error('User not found or has no posts');
-    }
-}

@@ -15,7 +15,6 @@ export type User = {
     username: string;
     password: string;
     createdAt: string;
-    postsIds: string[];
 };
 
 export const posts: Post[] = 
@@ -83,21 +82,18 @@ export const users: User[] =
         "id": "1",
         "username": "eden",
         "password": "3ec3f61825d3de4fd3300c0d6d1ba062c7d0918bc9f9fd5d82118e86818ac537",
-        "createdAt": "2025-01-25T12:00:00Z",
-        "postsIds": ["1", "3"]
+        "createdAt": "2025-01-25T12:00:00Z"
     },
     {
         "id": "2",
         "username": "john",
         "password": "7f0ae286591cd94a36cdf25f7f1462da2358db633775b3466f9a06e06db75fbc",
-        "createdAt": "2025-01-25T12:00:00Z",
-        "postsIds": ["2"]
+        "createdAt": "2025-01-25T12:00:00Z"
     },
     {
         "id": "3",
         "username": "jane",
         "password": "d6fc0d94c653987aa4ce956e084582d9e8edaf2b1b32f715df0d2226668f55e0",
-        "createdAt": "2025-01-25T12:00:00Z",
-        "postsIds": ["3"]
+        "createdAt": "2025-01-25T12:00:00Z"
     }
 ]

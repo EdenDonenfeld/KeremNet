@@ -16,8 +16,7 @@ export const register = async (username: string, password: string): Promise<{ st
       id: uuidv4(),
       username,
       password: hashedPassword,
-      createdAt: new Date().toISOString(),
-      postsIds: []
+      createdAt: new Date().toISOString()
     };
     users.push(newUser);
     return { status: 200, data: { message: 'User registered successfully', user: { id: newUser.id, username: newUser.username } } };
