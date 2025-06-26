@@ -2,6 +2,7 @@ import express from 'express';
 import path from 'path';
 import postRoutes from './routes/postsRoutes';
 import userRoutes from './routes/usersRoutes';
+import authRoutes from './routes/authRoutes';
 
 const app = express();
 const PORT = 3000;
@@ -16,6 +17,7 @@ app.use(express.json());
 
 app.use('/', postRoutes);
 app.use('/', userRoutes);
+app.use('/', authRoutes);
 
 app.get(/(.*)/, (req, res) => {
   res.sendFile(path.join(buildPath, 'index.html'));
