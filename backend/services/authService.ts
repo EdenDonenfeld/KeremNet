@@ -37,7 +37,6 @@ export const login = async (username: string, password: string): Promise<{ statu
     if (!isPasswordValid) {
       return { status: 400, data: { message: 'Invalid username or password' } };
     }
-    console.log("User logged in successfully");
     return { status: 200, data: { message: 'Login successful', user: { id: user.id, username: user.username } } };
   } catch (error) {
     return { status: 500, data: { message: 'Could not log in' } };
