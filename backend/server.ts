@@ -25,12 +25,13 @@ app.use(session({
 }));
 
 app.use('/', authRoutes);
-app.use('/', isAuthenticated, postRoutes);
-app.use('/', isAuthenticated, userRoutes);
 
-app.get(/(.*)/, isAuthenticated, (req, res) => {
+app.get(/(.*)/, (req, res) => {
   res.sendFile(path.join(buildPath, 'index.html'));
 });
+
+app.use('/', isAuthenticated, postRoutes);
+app.use('/', isAuthenticated, userRoutes);
 
 app.listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}`);

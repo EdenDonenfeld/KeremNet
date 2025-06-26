@@ -7,6 +7,8 @@ const Navbar = () => {
       <Stack direction="row" spacing={4} justifyContent="center">
         <Button color="secondary" variant="text" component={Link} to="/">Home</Button>
         <Button color="secondary" variant="text" component={Link} to="/add-post">Add Post</Button>
+        <Button color="secondary" variant="text" component={Link} to="/login">Login</Button>
+        <Button color="secondary" variant="text" component={Link} to="/register">Register</Button>
       </Stack>
     </Box>
   );
