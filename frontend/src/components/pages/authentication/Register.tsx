@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { Box, Typography, TextField, Button, Link, Stack } from '@mui/material';
+import { Box, Typography, TextField, Button, Stack } from '@mui/material';
+import { Link } from 'react-router-dom';
 
 const Register: React.FC = () => {
     const [username, setUsername] = useState<string>('');
@@ -46,8 +47,10 @@ const Register: React.FC = () => {
                     Register    
                 </Button>
 
-                <Link href="/login" underline="always" sx={{ mt: 2 }}>
-                    If you already have an account, please Login.
+                <Link to="/register" style={{ marginTop: '1rem', textDecoration: 'none' }}>
+                    <Typography variant="body2" color="primary">
+                        If you already have an account, please Login.
+                    </Typography>
                 </Link>
             </Stack>
         </Box>

@@ -11,11 +11,12 @@ const Home: React.FC = () => {
     }
 
     if (error) {
-        <p className="error-message">Failed to load posts from server.</p>
+        const message = (error as Error).message || 'Error fetching posts';
+        return <p className="error-message">{message}</p>;
     }
 
-    if (!data) {
-        return <p className="no-posts-message">No posts available.</p>;
+    if (!data || data.length === 0) {
+        return <p className="no-posts-message">No posts available</p>;
     }
 
     return (

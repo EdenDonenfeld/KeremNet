@@ -4,9 +4,8 @@ import { validatePost } from '../middleware/validation';
 
 const router = express.Router();
 
-router.get('/posts', getAllPosts);
-router.get('/posts/:id', getPostById);
-router.get('/users/:id/posts', getPostsByUserId);
-router.post('/posts', validatePost(), createPost);
+router.get('/', getAllPosts);
+router.get('/:id', getPostById);
+router.post('/', validatePost(), createPost);
 
 export default router;

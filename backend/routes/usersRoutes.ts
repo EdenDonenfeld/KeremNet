@@ -1,10 +1,11 @@
 import express from 'express';
 import { getAllUsers, getUserById } from '../controllers/usersController';
-import { isAuthenticated } from '../middleware/authValidation';
+import { getPostsByUserId } from '../controllers/postsController';
 
 const router = express.Router();
 
-router.get('/users', getAllUsers);
-router.get('/users/:id', getUserById);
+router.get('/', getAllUsers);
+router.get('/:id', getUserById);
+router.get('/:id/posts', getPostsByUserId); 
 
 export default router;

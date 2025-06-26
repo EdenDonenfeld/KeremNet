@@ -4,8 +4,13 @@ import { PostProps } from '../components/post/Post';
 
 const API_URL = 'http://localhost:3000/posts';
 
-export const useCreatePost = () => {
+export const useCreatePost = (options?: {
+  onError?: (error: any) => void;
+  onSuccess?: () => void;
+}) => {
   return useMutation({
-    mutationFn: (newPost: Pick<PostProps, 'username' | 'text'>) => createPost<Pick<PostProps, 'username' | 'text'>>(API_URL, newPost)
+    mutationFn: (newPost: Pick<PostProps, 'username' | 'text'>) =>
+      createPost(API_URL, newPost),
+    ...options,
   });
 };
