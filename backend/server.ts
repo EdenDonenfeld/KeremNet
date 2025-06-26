@@ -1,7 +1,10 @@
 import express from 'express';
 import path from 'path';
+import session from 'express-session';
 import postRoutes from './routes/postsRoutes';
 import userRoutes from './routes/usersRoutes';
+import authRoutes from './routes/authRoutes';
+import { isAuthenticated } from './middleware/authValidation';
 
 const app = express();
 const PORT = 3000;
@@ -14,8 +17,17 @@ app.use(express.static(buildPath));
 app.use('/images', express.static(path.join(__dirname, 'images')));
 app.use(express.json());
 
-app.use('/', postRoutes);
-app.use('/', userRoutes);
+app.use(session({
+  secret: 'zoey',
+  resave: false,
+  saveUninitialized: false,
+  cookie: { secure: false }
+}));
+
+app.use('/', authRoutes);
+
+app.use('/posts', isAuthenticated, postRoutes);
+app.use('/users', isAuthenticated, userRoutes);
 
 app.get(/(.*)/, (req, res) => {
   res.sendFile(path.join(buildPath, 'index.html'));

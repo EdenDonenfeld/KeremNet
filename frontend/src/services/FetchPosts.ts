@@ -1,9 +1,11 @@
 import axios from "axios";
 
 export const fetchData = async <T>(API_URL: string): Promise<T> => {
-    const response = await axios.get<T>(API_URL);
-    if (response.status !== 200) {
-        throw new Error(`Error fetching posts: ${response.statusText}`);
+    try {
+        const response = await axios.get<T>(API_URL);
+        return response.data;
+    } catch (error: any) {
+        const message = error?.response?.data?.message || 'Error fetching data';
+        throw new Error(message);
     }
-    return response.data;
-}
+};

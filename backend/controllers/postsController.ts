@@ -1,7 +1,6 @@
 import { Request, Response } from "express";
 import { validationResult } from 'express-validator';
 import { fetchAllPosts, fetchPostById, fetchAllUsersPosts, uploadPost  } from "../services/postsService";
-import { fetchUserPostIds } from "../services/usersService";
 
 export const getAllPosts = (req: Request, res: Response) => {
     try {
@@ -30,21 +29,6 @@ export const getPostById = (req: Request, res: Response) => {
     }
 }
 
-export const getPostsByUserId = (req: Request, res: Response) => {
-    const userId = req.params.id;
-    try {
-        const postIds = fetchUserPostIds(userId);
-        const posts = fetchAllUsersPosts(postIds);
-        res.status(200).json(posts);
-    } catch (error) {
-        if (error instanceof Error) {
-            res.status(404).render('error', { error: error.message, status: 404 });
-        } else {
-            res.status(500).render('error', { error: 'An unknown error occurred', status: 500 });
-        }
-    }
-}
-
 export const createPost = (req: Request, res: Response): void => {
     try {
         const errors = validationResult(req);
@@ -53,10 +37,10 @@ export const createPost = (req: Request, res: Response): void => {
             return;
         }
 
-        const { username, text } = req.body;
+        const { text } = req.body;
         const newPost = {
             id: Math.floor(Math.random() * 1000000).toString(),
-            username: username,
+            username: req.session.user || 'Anonymous',
             text: text,
             date: new Date().toISOString(),
             likes: 0,
