@@ -1,7 +1,7 @@
 import express from 'express';
 import path from 'path';
-import { getAllPosts, getPostById, getPostsByUserId, createPost } from './controllers/postsController';
-import { getAllUsers, getUserById } from './controllers/usersController';
+import postRoutes from './routes/postsRoutes';
+import userRoutes from './routes/usersRoutes';
 
 const app = express();
 const PORT = 3000;
@@ -12,34 +12,10 @@ app.set('view engine', 'ejs');
 const buildPath = path.join(__dirname, '../frontend/build');
 app.use(express.static(buildPath));
 app.use('/images', express.static(path.join(__dirname, 'images')));
+app.use(express.json());
 
-app.get('/', (req, res) => {
-    res.sendFile(path.join(buildPath, 'index.html'));
-});
-
-app.get('/posts', (req, res) => {
-    getAllPosts(req, res);
-});
-
-app.get('/posts/:id', (req, res) => {
-    getPostById(req, res);
-});
-
-app.get('/users', (req, res) => {
-    getAllUsers(req, res);
-});
-
-app.get('/users/:id', (req, res) => {
-    getUserById(req, res);
-});
-
-app.get('/users/:id/posts', (req, res) => {
-    getPostsByUserId(req, res);
-});
-
-app.post('/posts', express.json(), (req, res) => {
-    createPost(req, res);
-});
+app.use('/', postRoutes);
+app.use('/', userRoutes);
 
 app.get(/(.*)/, (req, res) => {
   res.sendFile(path.join(buildPath, 'index.html'));

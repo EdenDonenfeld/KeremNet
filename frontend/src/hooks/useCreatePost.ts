@@ -6,6 +6,6 @@ const API_URL = 'http://localhost:3000/posts';
 
 export const useCreatePost = () => {
   return useMutation({
-    mutationFn: (newPost: PostProps) => createPost<PostProps>(API_URL, newPost)
+    mutationFn: (newPost: Pick<PostProps, 'username' | 'text'>) => createPost<Pick<PostProps, 'username' | 'text'>>(API_URL, newPost)
   });
 };

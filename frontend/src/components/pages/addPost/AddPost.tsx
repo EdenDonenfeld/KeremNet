@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useCreatePost } from '../../../hooks/useCreatePost';
 import { Box, Typography, TextField, Button } from '@mui/material';
+import { PostProps } from '../../post/Post';
 
 const AddPost: React.FC = () => {
     const [username, setUsername] = useState<string>('');
@@ -9,14 +10,9 @@ const AddPost: React.FC = () => {
 
     const createPost = () => {
       if (username !== '' || content === '') {
-        const postId = Math.floor(Math.random() * 1000000);
-        const newPost = {
-          id: postId.toString(),
+        const newPost: Pick<PostProps, 'username' | 'text'> = {
           username: username,
           text: content,
-          date: new Date().toISOString(),
-          likes: 0,
-          comments: []
         }
         mutate(newPost);
       }

@@ -1,4 +1,5 @@
 import { Request, Response } from "express";
+import { validationResult } from 'express-validator';
 import { fetchAllPosts, fetchPostById, fetchAllUsersPosts, uploadPost  } from "../services/postsService";
 import { fetchUserPostIds } from "../services/usersService";
 
@@ -44,10 +45,22 @@ export const getPostsByUserId = (req: Request, res: Response) => {
     }
 }
 
-export const createPost = (req: Request, res: Response) => {
-    const newPost = req.body;
+export const createPost = (req: Request, res: Response): void => {
     try {
+        const newPost = req.body;
+        newPost.id = Math.floor(Math.random() * 1000000).toString();
+        newPost.date = new Date().toISOString();
+        newPost.likes = 0;
+        newPost.comments = [];
+
+        const errors = validationResult(newPost);
+        if (!errors.isEmpty()) {
+            res.status(400).json({ errors: errors.array() });
+            return;
+        }
+        
         const createdPost = uploadPost(newPost);
+
         res.status(200).json(createdPost);
     } catch (error) {
         if (error instanceof Error) {
