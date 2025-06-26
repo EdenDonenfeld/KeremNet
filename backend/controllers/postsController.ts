@@ -62,8 +62,6 @@ export const createPost = (req: Request, res: Response): void => {
             likes: 0,
             comments: []
         }
-
-        console.log('Creating post:', newPost);
         
         const createdPost = uploadPost(newPost);
         res.status(200).json(createdPost);
