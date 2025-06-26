@@ -29,6 +29,10 @@ app.use('/', authRoutes);
 app.use('/posts', isAuthenticated, postRoutes);
 app.use('/users', isAuthenticated, userRoutes);
 
+app.get('/profile', isAuthenticated, (req, res) => {
+  res.render('profile', { user: req.session.user });
+});
+
 app.get(/(.*)/, (req, res) => {
   res.sendFile(path.join(buildPath, 'index.html'));
 });
