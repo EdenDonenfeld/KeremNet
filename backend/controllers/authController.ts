@@ -24,7 +24,7 @@ export const loginUser = async (req: Request, res: Response): Promise<void> => {
   const result = await login(username, password);
 
   if (result.status === 200) {
-    req.session.user = result.data.user.username;
+    req.session.user = result.data.user?.username;
   }
 
   res.status(result.status).json(result.data);
