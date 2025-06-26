@@ -1,4 +1,4 @@
-type Post = {
+export type Post = {
     id: string;
     username: string;
     text: string;
@@ -10,7 +10,7 @@ type Post = {
     }[];
 };
 
-type User = {
+export type User = {
     id: string;
     username: string;
     createdAt: string;

@@ -1,5 +1,6 @@
 import { Request, Response } from "express";
-import { fetchAllPosts, fetchPostById, fetchAllUsersPosts  } from "../services/postsService";
+import { validationResult } from 'express-validator';
+import { fetchAllPosts, fetchPostById, fetchAllUsersPosts, uploadPost  } from "../services/postsService";
 import { fetchUserPostIds } from "../services/usersService";
 
 export const getAllPosts = (req: Request, res: Response) => {
@@ -38,6 +39,35 @@ export const getPostsByUserId = (req: Request, res: Response) => {
     } catch (error) {
         if (error instanceof Error) {
             res.status(404).render('error', { error: error.message, status: 404 });
+        } else {
+            res.status(500).render('error', { error: 'An unknown error occurred', status: 500 });
+        }
+    }
+}
+
+export const createPost = (req: Request, res: Response): void => {
+    try {
+        const errors = validationResult(req);
+        if (!errors.isEmpty()) {
+            res.status(400).json({ errors: errors.array() });
+            return;
+        }
+
+        const { username, text } = req.body;
+        const newPost = {
+            id: Math.floor(Math.random() * 1000000).toString(),
+            username: username,
+            text: text,
+            date: new Date().toISOString(),
+            likes: 0,
+            comments: []
+        }
+        
+        const createdPost = uploadPost(newPost);
+        res.status(200).json(createdPost);
+    } catch (error) {
+        if (error instanceof Error) {
+            res.status(400).render('error', { error: error.message, status: 400 });
         } else {
             res.status(500).render('error', { error: 'An unknown error occurred', status: 500 });
         }
