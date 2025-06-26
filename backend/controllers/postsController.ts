@@ -40,7 +40,7 @@ export const createPost = (req: Request, res: Response): void => {
         const { text } = req.body;
         const newPost = {
             id: Math.floor(Math.random() * 1000000).toString(),
-            username: req.session.user || 'Anonymous',
+            username: req.session.user.username || 'Anonymous',
             text: text,
             date: new Date().toISOString(),
             likes: 0,
