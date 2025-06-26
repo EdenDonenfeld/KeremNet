@@ -47,20 +47,23 @@ export const getPostsByUserId = (req: Request, res: Response) => {
 
 export const createPost = (req: Request, res: Response): void => {
     try {
-        const newPost = req.body;
-        newPost.id = Math.floor(Math.random() * 1000000).toString();
-        newPost.date = new Date().toISOString();
-        newPost.likes = 0;
-        newPost.comments = [];
-
-        const errors = validationResult(newPost);
+        const errors = validationResult(req);
         if (!errors.isEmpty()) {
             res.status(400).json({ errors: errors.array() });
             return;
         }
+
+        const { username, text } = req.body;
+        const newPost = {
+            id: Math.floor(Math.random() * 1000000).toString(),
+            username: username,
+            text: text,
+            date: new Date().toISOString(),
+            likes: 0,
+            comments: []
+        }
         
         const createdPost = uploadPost(newPost);
-
         res.status(200).json(createdPost);
     } catch (error) {
         if (error instanceof Error) {
