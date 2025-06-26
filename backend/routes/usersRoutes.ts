@@ -1,5 +1,6 @@
 import express from 'express';
 import { getAllUsers, getUserById } from '../controllers/usersController';
+import { isAuthenticated } from '../middleware/authValidation';
 
 const router = express.Router();
 
