@@ -3,9 +3,11 @@ import { Request, Response } from 'express';
 export const getUserProfile = (req: Request, res: Response) => {
     try {
         const user = req.session.user;
-        if (!user) {
-            return res.status(404).render('error', { error: "User not logged in", status: 404 });
-        }
+        console.log('User profile request:', user);
+        res.status(200).json({
+            username: user.username,
+            createdAt: user.createdAt
+        })
     } catch (error) {
         if (error instanceof Error) {
             res.status(500).render('error', { error: error.message, status: 500 });

@@ -9,6 +9,7 @@ const Navbar = () => {
         <Button color="secondary" variant="text" component={Link} to="/add-post">Add Post</Button>
         <Button color="secondary" variant="text" component={Link} to="/login">Login</Button>
         <Button color="secondary" variant="text" component={Link} to="/register">Register</Button>
+        <Button color="secondary" variant="text" component={Link} to="/profile">Profile</Button>
       </Stack>
     </Box>
   );

@@ -4,6 +4,7 @@ import session from 'express-session';
 import postRoutes from './routes/postsRoutes';
 import userRoutes from './routes/usersRoutes';
 import authRoutes from './routes/authRoutes';
+import { getUserProfile } from './controllers/profileController';
 import { isAuthenticated } from './middleware/authValidation';
 
 const app = express();
@@ -30,7 +31,7 @@ app.use('/posts', isAuthenticated, postRoutes);
 app.use('/users', isAuthenticated, userRoutes);
 
 app.get('/profile', isAuthenticated, (req, res) => {
-  res.render('profile', { user: req.session.user });
+  getUserProfile(req, res);
 });
 
 app.get(/(.*)/, (req, res) => {
