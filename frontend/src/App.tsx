@@ -7,6 +7,7 @@ import ErrorPage from './components/pages/errorPage/ErrorPage';
 import AddPost from './components/pages/addPost/AddPost';
 import Login from './components/pages/authentication/Login';
 import Register from './components/pages/authentication/Register';
+import Profile from './components/pages/profile/Profile';
 
 const queryClient = new QueryClient();
 
@@ -21,6 +22,7 @@ const App = () => {
               <Route path="/add-post" element={<AddPost />} />
               <Route path="/login" element={<Login />} />
               <Route path="/register" element={<Register />} />
+              <Route path="/profile" element={<Profile />} />
               <Route path="*" element={<ErrorPage />} />
             </Routes>
         </ApplicationLayout>
