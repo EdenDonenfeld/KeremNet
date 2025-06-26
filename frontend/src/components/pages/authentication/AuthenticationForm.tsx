@@ -22,10 +22,6 @@ const AuthenticationForm: React.FC<Props> = ({
 }) => {
     return (
         <>
-            <Typography variant="h5" component="h1" gutterBottom>
-                Register Page
-            </Typography>
-
             <TextField
                 fullWidth
                 label="Username"

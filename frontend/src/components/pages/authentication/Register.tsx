@@ -38,6 +38,9 @@ const Register: React.FC = () => {
     return (
         <Box sx={{ padding: 1, maxWidth: 600, margin: 'auto', textAlign: 'center' }}>
             <Stack sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                <Typography variant="h5" component="h1" gutterBottom>
+                    Register Page
+                </Typography>
                 <AuthenticationForm
                     handleClick={register}
                     buttonText="Register"
