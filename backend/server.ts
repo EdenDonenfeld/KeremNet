@@ -1,15 +1,20 @@
 import express from 'express';
 import path from 'path';
 import session from 'express-session';
+import mongoose from 'mongoose';
 import postRoutes from './routes/postsRoutes';
 import userRoutes from './routes/usersRoutes';
 import authRoutes from './routes/authRoutes';
 import profileRoutes from './routes/profileRoutes';
-import { getUserProfile } from './controllers/profileController';
 import { isAuthenticated } from './middleware/authValidation';
 
 const app = express();
 const PORT = 3000;
+const MONGO_URI = 'mongodb://localhost:6000/zoey';
+
+mongoose.connect(MONGO_URI)
+.then(() => console.log('Connected to MongoDB'))
+.catch((err) => console.error('MongoDB connection error:', err));
 
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
