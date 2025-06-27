@@ -51,7 +51,7 @@ const Profile: React.FC = () => {
       </Typography>
 
       <Box sx={{ mt: 4 }}>
-        <Typography variant="h6" color="primary">Your Posts:</Typography>
+        <Typography variant="h6" color="primary" fontWeight={'bold'}>Your Posts:</Typography>
         {postsData?.length === 0 ? (
           <Typography>No posts found.</Typography>
         ) : (
