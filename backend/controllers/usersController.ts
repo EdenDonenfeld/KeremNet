@@ -7,9 +7,9 @@ export const getAllUsers = (req: Request, res: Response) => {
         res.status(200).json(posts);
     } catch (error) {
         if (error instanceof Error) {
-            res.status(404).render('error', { error: error.message, status: 404 });
+            res.status(404).render('error', { message: error.message, status: 404 });
         } else {
-            res.status(500).render('error', { error: 'An unknown error occurred', status: 500 });
+            res.status(500).render('error', { message: 'An unknown error occurred', status: 500 });
         }
     }
 }
@@ -21,9 +21,9 @@ export const getUserById = (req: Request, res: Response) => {
         res.status(200).json(post);
     } catch (error) {
         if (error instanceof Error) {
-            res.status(404).render('error', { error: error.message, status: 404 });
+            res.status(404).render('error', { message: error.message, status: 404 });
         } else {
-            res.status(500).render('error', { error: 'An unknown error occurred', status: 500 });
+            res.status(500).render('error', { message: 'An unknown error occurred', status: 500 });
         }
     }
 }

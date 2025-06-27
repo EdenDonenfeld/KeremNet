@@ -1,6 +1,7 @@
 export type Post = {
     id: string;
     username: string;
+    userId: string;
     text: string;
     date: string;
     likes: number;
@@ -22,6 +23,7 @@ export const posts: Post[] =
     {
         "id": "1",
         "username": "eden",
+        "userId": "1",
         "text": "This is a post by Eden",
         "date": "2025-06-01T12:00:00Z",
         "likes": 10,
@@ -39,6 +41,7 @@ export const posts: Post[] =
     {
         "id": "2",
         "username": "john",
+        "userId": "2",
         "text": "This is a post by John",
         "date": "2025-06-01T12:00:00Z",
         "likes": 10,
@@ -56,6 +59,7 @@ export const posts: Post[] =
     {
         "id": "3",
         "username": "jane",
+        "userId": "3",
         "text": "This is a post by Jane",
         "date": "2026-06-01T12:00:00Z",
         "likes": 10,

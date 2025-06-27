@@ -1,15 +1,11 @@
 import { useQuery } from '@tanstack/react-query';
-import axios from 'axios';
+import { fetchData } from '../services/FetchPosts';
 import { API_URL } from '../consts/apiRoute';
+import { ProfileData } from '../components/pages/profile/Profile';
 
 export const useProfile = () => {
   return useQuery({
     queryKey: ['profile'],
-    queryFn: async () => {
-      const response = await axios.get(`${API_URL}/profile`, {
-        withCredentials: true,
-      });
-    return response.data;
-    }
+    queryFn: () => fetchData<ProfileData>(`${API_URL}/profile`)
   });
 }

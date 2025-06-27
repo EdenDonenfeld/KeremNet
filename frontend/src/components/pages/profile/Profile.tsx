@@ -1,19 +1,37 @@
-import React from 'react'
+import React from 'react';
 import { Box, Typography, CircularProgress } from '@mui/material';
 import { useProfile } from '../../../hooks/useProfile';
+import { useProfilePosts } from '../../../hooks/useProfilePosts';
+import Post from '../../post/Post';
+
+interface ProfileData {
+  id: string;
+  username: string;
+  createdAt: string;
+}
 
 const Profile: React.FC = () => {
-  const { data, isLoading, isError } = useProfile();
+  const {
+    data: profileData,
+    isLoading: profileLoading,
+    isError: profileError,
+  } = useProfile();
 
-  if (isLoading) {
+  const {
+    data: postsData,
+    isLoading: postsLoading,
+    isError: postsError,
+  } = useProfilePosts(profileData?.id || '', !!profileData?.id);
+
+  if (profileLoading || postsLoading) {
     return <CircularProgress />;
   }
 
-  if (isError) {
+  if (profileError || postsError || !profileData) {
     return <Typography color="error">Error loading profile</Typography>;
   }
 
-  const createdAt = new Date(data.createdAt);
+  const createdAt = new Date(profileData.createdAt);
   const options: Intl.DateTimeFormatOptions = {
     year: 'numeric',
     month: 'long',
@@ -21,18 +39,37 @@ const Profile: React.FC = () => {
     hour: '2-digit',
     minute: '2-digit',
   };
-  data.createdAt = createdAt.toLocaleDateString('en-US', options);
+  const formattedDate = createdAt.toLocaleDateString('en-US', options);
 
   return (
     <Box sx={{ padding: 2, textAlign: 'center' }}>
-      <Typography variant="h4" color='primary' sx={{ fontWeight: 'bold', mb: 2 }}>
-        Welcome, {data.username} !
+      <Typography variant="h4" color="primary" sx={{ fontWeight: 'bold', mb: 2 }}>
+        Welcome, {profileData.username}!
       </Typography>
-      <Typography variant="body1" color='primary'>
-        Account created: {data.createdAt}
+      <Typography variant="body1" color="primary">
+        Account created: {formattedDate}
       </Typography>
+
+      <Box sx={{ mt: 4 }}>
+        <Typography variant="h6">Your Posts:</Typography>
+        {postsData?.length === 0 ? (
+          <Typography>No posts found.</Typography>
+        ) : (
+          postsData?.map((post: any, idx: number) => (
+            <Post
+              id={post.id}
+              username={post.username}
+              text={post.text}
+              date={post.data}
+              likes={post.likes}
+              comments={post.comments}
+            />
+          ))
+        )}
+      </Box>
     </Box>
   );
-}
+};
 
 export default Profile;
+export type { ProfileData };

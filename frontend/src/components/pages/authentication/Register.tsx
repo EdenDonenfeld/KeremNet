@@ -12,7 +12,6 @@ const Register: React.FC = () => {
 
     const register = async () => {
         try {
-            console.log('Registering user:', { username, password });
             const response = axios.post(`${API_URL}/register`, {
                 username,
                 password
