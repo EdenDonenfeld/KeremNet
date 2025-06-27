@@ -4,6 +4,6 @@ export const isAuthenticated = (req: Request, res: Response, next: NextFunction)
   if (req.session && req.session.user) {
     next();
   } else {
-    res.status(400).json({ message: 'You must be logged in to access the website' });
+    res.status(400).render('error', { message: 'You must be logged in to access the website', status: 400 });
   }
 };
