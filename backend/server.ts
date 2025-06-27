@@ -10,7 +10,7 @@ import { isAuthenticated } from './middleware/authValidation';
 
 const app = express();
 const PORT = 3000;
-const MONGO_URI = 'mongodb://localhost:6000/zoey';
+const MONGO_URI = 'mongodb://localhost:27017/zoey';
 
 mongoose.connect(MONGO_URI)
 .then(() => console.log('Connected to MongoDB'))

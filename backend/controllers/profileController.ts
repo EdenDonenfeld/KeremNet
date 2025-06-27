@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
 import { fetchUserPosts } from '../services/profileService';
 
-export const getUserProfile = (req: Request, res: Response) => {
+export const getUserProfile = async (req: Request, res: Response) => {
     try {
         const user = req.session.user;
         res.status(200).json({
@@ -18,10 +18,10 @@ export const getUserProfile = (req: Request, res: Response) => {
     }
 }
 
-export const getUserPosts = (req: Request, res: Response) => {
+export const getUserPosts = async (req: Request, res: Response) => {
     try {
         const userId = req.params.id;
-        const userPosts = fetchUserPosts(userId);
+        const userPosts = await fetchUserPosts(userId);
         res.status(200).json(userPosts);
     } catch (error) {
         if (error instanceof Error) {

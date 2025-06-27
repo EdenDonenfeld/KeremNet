@@ -1,38 +1,37 @@
-import { posts, Post } from '../api/data';
+import { Post, PostProps } from '../models/Post';
 
-export const fetchAllPosts = () => {
-    if (posts && posts.length > 0) {
-        return posts;
-    } else {
-        throw new Error('No posts found');
-    }
-}
+export const fetchAllPosts = async (): Promise<PostProps[]> => {
+  const posts = await Post.find().sort({ date: -1 }).lean();
+  if (posts && posts.length >= 0) {
+    return posts;
+  }
+  throw new Error('No posts found');
+};
 
-export const fetchPostById = (id: string) => {
-    const post = posts.find(post => post.id === id);
-    
-    if (post) {
-        return post;
-    } else {
-        throw new Error('Post not found');
-    }
-}
+export const fetchPostById = async (id: string): Promise<PostProps> => {
+  const post = await Post.findById(id).lean();
+  if (!post) {
+    throw new Error('Post not found');
+  }
+  return post;
+};
 
-export const fetchAllUsersPosts = (postIds: string[]) => {
-    const userPosts = posts.filter(post => postIds.includes(post.id));
+export const fetchAllUsersPosts = async (postIds: string[]): Promise<PostProps[]> => {
+  const posts = await Post.find({ _id: { $in: postIds } }).lean();
+  if (posts && posts.length >= 0) {
+    return posts;
+  }
+  throw new Error('No posts found for this user');
+};
 
-    if (userPosts.length > 0) {
-        return userPosts;
-    } else {
-        throw new Error('No posts found for this user');
-    }
-}
+export const uploadPost = async (newPostData: Pick<PostProps, 'username' | 'userId' | 'text'>): Promise<PostProps> => {
+  const post = new Post({
+    ...newPostData,
+    date: new Date(),
+    likes: 0,
+    comments: []
+  });
 
-export const uploadPost = (newPost: Post) => {
-    if (!newPost || !newPost.id || !newPost.username || !newPost.text) {
-        throw new Error('Invalid post data');
-    }
-
-    posts.push(newPost);
-    return newPost;
-}
+  const saved = await post.save();
+  return saved.toObject();
+};

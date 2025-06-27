@@ -1,6 +1,14 @@
-import mongoose from "mongoose";
+import { Schema, model, Document } from 'mongoose';
 
-const postSchema = new mongoose.Schema({
+export interface PostProps extends Document {
+  username: string;
+  userId: string;
+  text: string;
+  date: Date;
+  likes: number;
+  comments: { username: string; text: string }[];
+}
+const postSchema = new Schema<PostProps>({
     username: { type: String, required: true },
     userId: { type: String, required: true },
     text: { type: String, required: true },
@@ -9,6 +17,4 @@ const postSchema = new mongoose.Schema({
     comments: { type: [{ username: String, text: String }], default: [] }
 })
 
-const Post = mongoose.model('Post', postSchema);
-
-module.exports = Post;
+export const Post = model<PostProps>('Post', postSchema);

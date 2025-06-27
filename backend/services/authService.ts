@@ -1,40 +1,46 @@
 import bcrypt from 'bcrypt';
 import { v4 as uuidv4 } from 'uuid';
-import { users, User } from '../api/data';
+import { User, UserProps } from '../models/User';
+
 
 type AuthenticationResponse = {
   status: number;
   data: {
     message: string;
-    user?: User;
+    user?: Pick<UserProps, 'id' | 'username' | 'createdAt'>;
   }
 }
 
 const SALT_ROUNDS = 10;
 
 export const register = async (username: string, password: string): Promise<AuthenticationResponse> => {
-  const existUser = users.find(user => user.username === username);
+  const existUser = await User.findOne({ username });
   if (existUser) {
     return { status: 400, data: { message: 'Username already exists' } };
   }
 
   try {
     const hashedPassword = await bcrypt.hash(password, SALT_ROUNDS);
-    const newUser: User = {
+    const newUser = {
       id: uuidv4(),
       username,
       password: hashedPassword,
-      createdAt: new Date().toISOString()
+      createdAt: new Date()
     };
-    users.push(newUser);
-    return { status: 200, data: { message: 'User registered successfully', user: { ...newUser } } };
+    const newUserModel = new User(newUser);
+    await newUserModel.save();
+    return { status: 200, data: { message: 'User registered successfully', user: { 
+      id: newUser.id,
+      username: newUser.username,
+      createdAt: newUser.createdAt
+     } } };
   } catch (error) {
     return { status: 500, data: { message: 'Could not register user' } };
   }
 };
 
 export const login = async (username: string, password: string): Promise<AuthenticationResponse> => {
-  const user = users.find(user => user.username === username);
+  const user = await User.findOne({ username });
   if (!user) {
     return { status: 400, data: { message: 'Invalid username or password' } };
   }
@@ -44,7 +50,11 @@ export const login = async (username: string, password: string): Promise<Authent
     if (!isPasswordValid) {
       return { status: 400, data: { message: 'Invalid username or password' } };
     }
-    return { status: 200, data: { message: 'Login successful', user: { ...user } } };
+    return { status: 200, data: { message: 'Login successful', user: { 
+      id: user.id,
+      username: user.username,
+      createdAt: user.createdAt
+     } } };
   } catch (error) {
     return { status: 500, data: { message: 'Could not log in' } };
   }
