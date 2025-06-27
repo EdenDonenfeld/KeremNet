@@ -22,7 +22,6 @@ export const getUserPosts = (req: Request, res: Response) => {
     try {
         const userId = req.params.id;
         const userPosts = fetchUserPosts(userId);
-        console.log(`Fetched posts for user ID: ${userId}`, userPosts);
         res.status(200).json(userPosts);
     } catch (error) {
         if (error instanceof Error) {
