@@ -43,15 +43,15 @@ const Profile: React.FC = () => {
 
   return (
     <Box sx={{ padding: 2, textAlign: 'center' }}>
-      <Typography variant="h4" color="primary" sx={{ fontWeight: 'bold', mb: 2 }}>
+      <Typography variant="h4" sx={{ fontWeight: 'bold', mb: 2 }}>
         Welcome, {profileData.username}!
       </Typography>
-      <Typography variant="body1" color="primary">
+      <Typography variant="body1">
         Account created: {formattedDate}
       </Typography>
 
       <Box sx={{ mt: 4 }}>
-        <Typography variant="h6">Your Posts:</Typography>
+        <Typography variant="h6" color="primary">Your Posts:</Typography>
         {postsData?.length === 0 ? (
           <Typography>No posts found.</Typography>
         ) : (
