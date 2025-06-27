@@ -1,5 +1,3 @@
-import path from 'path';
-import fs from 'fs';
 import { Request, Response } from 'express';
 import { validationResult } from 'express-validator';
 import { register, login } from '../services/authService';
@@ -12,16 +10,6 @@ export const registerUser = async (req: Request, res: Response): Promise<void> =
   }
   const { username, password } = req.body;
   const result = await register(username, password);
-
-  if (req.file) {
-    const userImagesDir = path.join(__dirname, '../images/users');
-    if (!fs.existsSync(userImagesDir)) {
-      fs.mkdirSync(userImagesDir, { recursive: true });
-    }
-
-    const imagePath = path.join(userImagesDir, `${result.data.user?.id}.png`);
-    fs.writeFileSync(imagePath, req.file.buffer);
-  }
 
   res.status(result.status).json(result.data);
 };
